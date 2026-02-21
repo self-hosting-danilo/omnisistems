@@ -10,7 +10,7 @@ API_TOKEN_TELEBOT = os.getenv("TELEGRAM_TOKEN", '')
 CHAT_ID = os.getenv('CHAT_ID', '')
 
 app = Flask(__name__, static_folder='static')
-# bot = telebot.TeleBot(API_TOKEN_TELEBOT)
+bot = telebot.TeleBot(API_TOKEN_TELEBOT)
 
 
 @app.route('/', methods=['POST', 'GET'])
@@ -23,7 +23,7 @@ def index():
 
         form_ = f"""Nome: {nome} \n Email: {email} \n serviço: {servico} \n mensagem: {mensagem}"""
 
-        # bot.send_message(CHAT_ID, form_)
+        bot.send_message(CHAT_ID, form_)
 
     return render_template('index.html')
 
