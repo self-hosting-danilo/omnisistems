@@ -6,7 +6,9 @@
     <meta name="description" content="Omnisistems - Soluções em monitoramento industrial, landing pages e ecommerces de alta performance.">
     <title>Omnisistems | Tecnologia & Performance</title>
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
-    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#ffffff">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
@@ -35,11 +37,7 @@
         <div class="grid">
             <div class="card">
                 <div class="card-media">
-                      <img 
-                        src="static/gifs/Monitoramento.gif" 
-                        alt="Monitoramento de Usinas de Oxigênio"
-                        loading="lazy"
-                    >
+                    <img src="{{ url_for('static', filename='gifs/Monitoramento.gif') }}">
                 </div>
                 <div class="card-content">
                     <h3>Usinas de Oxigênio Hospitalar</h3>
@@ -50,11 +48,7 @@
 
             <div class="card">
                 <div class="card-media">
-                    <img 
-                        src="static/gifs/bellafly.gif" 
-                        alt="Web E-commerce"
-                        loading="lazy"
-                    >
+                    <img src="{{ url_for('static', filename='gifs/bellafly.gif') }}">
                 </div>
                 <div class="card-content">
                     <h3>E-commerce Moderno</h3>
@@ -113,6 +107,12 @@
         </div>
     </footer>
 
-    <script src="static/js/script.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/service-worker.js')
+        .then(() => console.log("Service Worker registrado"));
+    }
+    </script>
 </body>
 </html>

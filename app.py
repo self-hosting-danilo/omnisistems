@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_from_directory
 import telebot
 from dotenv import load_dotenv
 import os
@@ -10,7 +10,7 @@ API_TOKEN_TELEBOT = os.getenv("TELEGRAM_TOKEN", '')
 CHAT_ID = os.getenv('CHAT_ID', '')
 
 app = Flask(__name__, static_folder='static')
-bot = telebot.TeleBot(API_TOKEN_TELEBOT)
+# bot = telebot.TeleBot(API_TOKEN_TELEBOT)
 
 
 @app.route('/', methods=['POST', 'GET'])
@@ -23,11 +23,17 @@ def index():
 
         form_ = f"""Nome: {nome} \n Email: {email} \n serviço: {servico} \n mensagem: {mensagem}"""
 
-        bot.send_message(CHAT_ID, form_)
+        # bot.send_message(CHAT_ID, form_)
 
     return render_template('index.html')
 
+@app.route("/service-worker.js")
+def sw():
+    return send_from_directory(".", "service-worker.js")
 
+@app.route("/manifest.json")
+def manifest():
+    return send_from_directory(".", "manifest.json")
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
