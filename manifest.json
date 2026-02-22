@@ -3,8 +3,8 @@
   "short_name": "Omnisistems",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#ffffff",
+  "background_color": "#161616",
+  "theme_color": "#161616",
   "scope": "/",
   "icons": [
     {
